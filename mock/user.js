@@ -72,7 +72,7 @@ module.exports = [
 
   // user logout
   {
-    url: '/vue-admin-template/user/logout',
+    url: '/eduservice/user/logout',
     type: 'post',
     response: _ => {
       return {

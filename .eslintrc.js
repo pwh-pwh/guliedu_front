@@ -132,7 +132,7 @@ module.exports = {
     'no-sparse-arrays': 2,
     'no-this-before-super': 2,
     'no-throw-literal': 2,
-    'no-trailing-spaces': 2,
+    'no-trailing-spaces': 0,
     'no-undef': 2,
     'no-undef-init': 2,
     'no-unexpected-multiline': 2,
@@ -142,8 +142,8 @@ module.exports = {
     }],
     'no-unreachable': 2,
     'no-unsafe-finally': 2,
-    'no-unused-vars': [2, {
-      'vars': 'all',
+    'no-unused-vars': [0, {
+      'vars': 'none',
       'args': 'none'
     }],
     'no-useless-call': 2,
@@ -161,7 +161,7 @@ module.exports = {
         ':': 'before'
       }
     }],
-    'padded-blocks': [2, 'never'],
+    'padded-blocks': [0, 'never'],
     'quotes': [2, 'single', {
       'avoidEscape': true,
       'allowTemplateLiterals': true

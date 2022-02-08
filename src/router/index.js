@@ -76,7 +76,26 @@ export const constantRoutes = [
       }
     ]
   },
-
+  {
+    path: '/edu-teacher',
+    component: Layout,
+    name: 'edu-teacher',
+    meta: { title: '讲师管理', icon: 'el-icon-s-help' },
+    children: [
+      {
+        path: 'table',
+        name: 'edu-list',
+        component: () => import('@/views/edu/teacher/list'),
+        meta: { title: '讲师列表', icon: 'el-icon-s-order' }
+      },
+      {
+        path: 'save',
+        name: 'edu-add',
+        component: () => import('@/views/edu/teacher/save'),
+        meta: { title: '添加讲师', icon: 'el-icon-user-solid' }
+      }
+    ]
+  },
   {
     path: '/form',
     component: Layout,
