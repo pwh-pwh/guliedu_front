@@ -20,5 +20,19 @@ export default {
       method: 'post',
       data: teacher
     })
+  },
+  getTeacherInfoById(id) {
+    return request({
+      url: `/eduservice/edu-teacher/${id}`,
+      method: 'get'
+    })
+  },
+  updateTeacherInfoById(teacher) {
+    return request({
+      url: `/eduservice/edu-teacher/${teacher.id}`,
+      method: 'put',
+      data: teacher
+    })
   }
+
 }

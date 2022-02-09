@@ -20,7 +20,7 @@
         <el-input-number v-model="teacher.sort"></el-input-number>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="saveTeacher()">创建</el-button>
+        <el-button type="primary" @click="updateOrsave()">提交</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -30,6 +30,15 @@
 import TeacherApi from '@/api/teacher'
 export default {
   name: 'Save',
+  created() {
+    console.log('create.. ..create')
+    if (this.$route.params && this.$route.params.id) {
+      const id = this.$route.params.id
+      this.getInfo(id)
+    } else {
+      // this.teacher = {}
+    }
+  },
   data() {
     return {
       teacher: {}
@@ -44,6 +53,27 @@ export default {
         })
         this.$router.push('/edu-teacher/table')
       })
+    },
+    getInfo(id) {
+      TeacherApi.getTeacherInfoById(id).then(response => {
+        this.teacher = response.data.item
+      })
+    },
+    updateTeacher() {
+      TeacherApi.updateTeacherInfoById(this.teacher).then(() => {
+        this.$message({
+          type: 'success',
+          message: '修改成功'
+        })
+        this.$router.push('/edu-teacher/table')
+      })
+    },
+    updateOrsave() {
+      if (this.teacher.id) {
+        this.updateTeacher()
+      } else {
+        this.saveTeacher()
+      }
     }
   }
 }
