@@ -19,6 +19,22 @@
       <el-form-item label="讲师排序">
         <el-input-number v-model="teacher.sort"></el-input-number>
       </el-form-item>
+<!--    讲师头像  -->
+      <el-form-item babel="讲师头像">
+<!--        头像略缩图-->
+        <pan-thumb :image="teacher.avatar"/>
+        <el-button type="primary" icon="el-icon-upload" @click="imagecropperShow=true">更换头像</el-button>
+        <image-cropper
+        v-show="imagecropperShow"
+        :width="300"
+        :height="300"
+        :key="imagecropperKey"
+        url="/edu/oss/upload"
+        field="file"
+        @close="close"
+        @crop-upload-success="cropSuccess"
+        />
+      </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="updateOrsave()">提交</el-button>
       </el-form-item>
@@ -28,8 +44,15 @@
 
 <script>
 import TeacherApi from '@/api/teacher'
+
+import ImageCropper from '@/components/ImageCropper'
+import PanThumb from '@/components/PanThumb'
 export default {
   name: 'Save',
+  components: {
+    // eslint-disable-next-line vue/no-unused-components
+    ImageCropper, PanThumb
+  },
   created() {
     console.log('create.. ..create')
     if (this.$route.params && this.$route.params.id) {
@@ -41,7 +64,10 @@ export default {
   },
   data() {
     return {
-      teacher: {}
+      teacher: {},
+      imagecropperShow: false,
+      imagecropperKey: 0,
+      BASE_API: process.env.BASE_API
     }
   },
   methods: {
@@ -74,6 +100,16 @@ export default {
       } else {
         this.saveTeacher()
       }
+    },
+    cropSuccess(data) {
+      console.log(data)
+      this.imagecropperShow = false
+      this.teacher.avatar = data.url
+      this.imagecropperKey = this.imagecropperKey + 1
+    },
+    close() {
+      this.imagecropperShow = false
+      this.imagecropperKey = this.imagecropperKey + 1
     }
   }
 }
