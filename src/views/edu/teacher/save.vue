@@ -29,7 +29,7 @@
         :width="300"
         :height="300"
         :key="imagecropperKey"
-        url="/edu/oss/upload"
+        :url="baseURL+'/edu/oss/upload'"
         field="file"
         @close="close"
         @crop-upload-success="cropSuccess"
@@ -67,7 +67,7 @@ export default {
       teacher: {},
       imagecropperShow: false,
       imagecropperKey: 0,
-      BASE_API: process.env.BASE_API
+      baseURL: process.env.VUE_APP_BASE_API
     }
   },
   methods: {
