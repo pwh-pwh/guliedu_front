@@ -105,6 +105,27 @@ export const constantRoutes = [
     ]
   },
   {
+    path: '/edu-subject',
+    component: Layout,
+    name: 'edu-subject',
+    meta: { title: '课程分类管理', icon: 'el-icon-s-help' },
+    children: [
+      {
+        path: 'table',
+        name: 'edu-list',
+        component: () => import('@/views/edu/subject/list'),
+        meta: { title: '课程分类列表', icon: 'el-icon-s-order' }
+      },
+      {
+        path: 'save',
+        name: 'edu-add',
+        component: () => import('@/views/edu/subject/save'),
+        meta: { title: '添加课程分类', icon: 'el-icon-user-solid' },
+        hidden: false
+      }
+    ]
+  },
+  {
     path: '/form',
     component: Layout,
     children: [
