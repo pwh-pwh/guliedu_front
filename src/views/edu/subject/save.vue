@@ -44,11 +44,12 @@ export default {
       this.$refs.upload.submit()
     },
     fileUploadSuccess(response) {
-      if (response.success == true) {
+      if (response.success === true) {
         this.$message({
           type: 'success',
           message: response.message
         })
+        this.$router.push('/edu-subject/table')
       }
     },
     fileUploadError(response) {
