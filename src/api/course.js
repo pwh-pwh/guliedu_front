@@ -7,5 +7,12 @@ export default {
       method: 'post',
       data: courseInfo
     })
+  },
+  getTeacherList() {
+    return request({
+      url: '/eduservice/edu-teacher/list',
+      method: 'get'
+    })
   }
+
 }
