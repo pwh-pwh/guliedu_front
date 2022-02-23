@@ -126,6 +126,48 @@ export const constantRoutes = [
     ]
   },
   {
+    path: '/edu-course',
+    component: Layout,
+    name: 'edu-course',
+    meta: { title: '课程管理', icon: 'el-icon-s-help' },
+    children: [
+      {
+        path: 'table',
+        name: 'edu-list',
+        component: () => import('@/views/edu/course/list'),
+        meta: { title: '课程列表', icon: 'el-icon-s-order' }
+      },
+      {
+        path: 'info',
+        name: 'edu-add',
+        component: () => import('@/views/edu/course/info'),
+        meta: { title: '添加课程', icon: 'el-icon-user-solid' },
+        hidden: false
+      },
+      {
+        path: 'info/:id',
+        name: 'edu-edit',
+        component: () => import('@/views/edu/course/info'),
+        meta: { title: '编辑课程基本信息', icon: 'el-icon-user-solid' },
+        hidden: true
+      },
+      {
+        path: 'chapter/:id',
+        name: 'chapter-edit',
+        component: () => import('@/views/edu/course/chapter'),
+        meta: { title: '编辑课程大纲', icon: 'el-icon-user-solid' },
+        hidden: true
+      },
+      {
+        path: 'publish/:id',
+        name: 'publish',
+        component: () => import('@/views/edu/course/publish'),
+        meta: { title: '发布课程信息', icon: 'el-icon-user-solid' },
+        hidden: true
+      }
+    ]
+  },
+  {
     path: '/form',
     component: Layout,
     children: [
