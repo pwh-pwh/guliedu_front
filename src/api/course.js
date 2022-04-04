@@ -13,6 +13,19 @@ export default {
       url: '/eduservice/edu-teacher/list',
       method: 'get'
     })
+  },
+  getCourseInfo(courseId) {
+    return request({
+      url: '/eduservice/course/courseInfo/' + courseId,
+      method: 'get'
+    })
+  },
+  updateCourseInfo(courseInfo) {
+    return request({
+      url: '/eduservice/course/update',
+      method: 'post',
+      data: courseInfo
+    })
   }
 
 }
