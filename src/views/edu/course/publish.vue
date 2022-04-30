@@ -21,7 +21,8 @@ export default {
   data() {
     return {
       active: 2,
-      saveBtnDisabled: false
+      saveBtnDisabled: false,
+      courseId: 0
     }
   },
   methods: {
@@ -29,8 +30,17 @@ export default {
 
     },
     previous() {
-      this.$router.push('/edu-course/chapter/1')
+      this.$router.push('/edu-course/chapter/' + this.courseId);
+    },
+    init() {
+      if (this.$route.params.id) {
+        this.courseId = this.$route.params.id
+      }
     }
+
+  },
+  created() {
+    this.init()
   }
 }
 </script>
