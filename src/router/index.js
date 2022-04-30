@@ -132,7 +132,7 @@ export const constantRoutes = [
     meta: { title: '课程管理', icon: 'el-icon-s-help' },
     children: [
       {
-        path: 'table',
+        path: 'list',
         name: 'edu-list',
         component: () => import('@/views/edu/course/list'),
         meta: { title: '课程列表', icon: 'el-icon-s-order' }

@@ -26,6 +26,31 @@ export default {
       method: 'post',
       data: courseInfo
     })
+  },
+  getCoursePublicInfo(courseId) {
+    return request({
+      url: '/eduservice/course/coursePublicInfo/' + courseId,
+      method: 'get'
+    })
+  },
+  publicCourse(courseId) {
+    return request({
+      url: '/eduservice/course/publicCourse/' + courseId,
+      method: 'put'
+    })
+  },
+  getPageList(page, limit, queryObj) {
+    return request({
+      url: '/eduservice/course/query/' + page + '/' + limit,
+      method: 'get',
+      params: queryObj
+    })
+  },
+  deleteCourse(courseId) {
+    return request({
+      url: '/eduservice/course/' + courseId,
+      method: 'delete'
+    })
   }
 
 }
